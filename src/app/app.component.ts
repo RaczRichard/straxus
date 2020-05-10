@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthServiceService} from './services/auth-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'randi-fe';
+
+  constructor(public authService: AuthServiceService) {
+  }
+
 }
