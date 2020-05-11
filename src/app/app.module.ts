@@ -8,50 +8,56 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoggedOutGuard} from './guards/logged-out.guard';
-import { ProfileComponent } from './components/common/profile/profile.component';
+import {ProfileComponent} from './components/common/profile/profile.component';
 import {LoggedInGuard} from './guards/logged-in.guard';
-import { MessagesComponent } from './components/common/messages/messages.component';
-import { ChatComponent } from './components/common/chat/chat.component';
-import { SearchComponent } from './components/common/search/search.component';
+import {MessagesComponent} from './components/common/messages/messages.component';
+import {ChatComponent} from './components/common/chat/chat.component';
+import {SearchComponent} from './components/common/search/search.component';
 import {TokenInterceptor} from './utils/token.interceptor';
-import { UsersComponent } from './components/admin/users/users.component';
+import {UsersComponent} from './components/admin/users/users.component';
+// import {SettingsComponent} from './components/common/setting/setting.component';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [LoggedOutGuard]
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    canActivate: [LoggedOutGuard]
-  },
-  {
-    path: 'admin/users',
-    component: UsersComponent,
-    canActivate: [LoggedInGuard]
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [LoggedInGuard]
-  },
-  {
-    path: 'search',
-    component: SearchComponent,
-    canActivate: [LoggedInGuard]
-  },
-  {
-    path: 'chat-groups',
-    component: MessagesComponent,
-    canActivate: [LoggedInGuard]
-  },
-  {
-    path: 'chat',
-    component: ChatComponent,
-    canActivate: [LoggedInGuard]
-  },
+    {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [LoggedOutGuard]
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [LoggedOutGuard]
+    },
+    {
+        path: 'admin/users',
+        component: UsersComponent,
+        canActivate: [LoggedInGuard]
+    },
+    {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [LoggedInGuard]
+    },
+    {
+        path: 'search',
+        component: SearchComponent,
+        canActivate: [LoggedInGuard]
+    },
+    {
+        path: 'chat-groups',
+        component: MessagesComponent,
+        canActivate: [LoggedInGuard]
+    },
+    {
+        path: 'chat',
+        component: ChatComponent,
+        canActivate: [LoggedInGuard]
+    },
+    // {
+    //     path: 'setting',
+    //     component: SettingComponent,
+    //     canActivate: [LoggedInGuard]
+    // },
 ];
 
 @NgModule({
@@ -63,7 +69,8 @@ const routes: Routes = [
     MessagesComponent,
     ChatComponent,
     SearchComponent,
-    UsersComponent
+    UsersComponent,
+    // SettingComponent
   ],
   imports: [
     BrowserModule,

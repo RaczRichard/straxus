@@ -9,10 +9,25 @@ import User from '../../../models/User';
 })
 export class ProfileComponent implements OnInit {
 
+  settingForm = {
+        name: '',
+        age: '',
+        weight: '',
+        height: '',
+        live: '',
+        child: '',
+        school: '',
+        address: '',
+        looking: '',
+  };
+
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
   }
 
+    mentes(): void {
+        this.router.navigate(['/profile']);
+    }
 }
