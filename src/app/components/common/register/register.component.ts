@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+    registerForm = {
+        email: '',
+        password: '',
+    };
 
-  ngOnInit(): void {
-  }
+    public constructor(private http: HttpClient, private router: Router) {
 
+    }
+
+    ngOnInit(): void {
+    }
+
+    save() {
+        this.http.post('http://randi/auth/register', this.registerForm).subscribe((res) => {
+            this.router.navigate(['/profile']);
+            localStorage.setItem('user', JSON.stringify(res));
+        });
+    }
 }

@@ -1,1 +1,10 @@
 <p>register works!</p>
+<form>
+    <label for="email"></label><br>
+    <input id="email" type="text" name="email" [(ngModel)]="registerForm.email"/>
+    <label for="password"></label><br>
+    <input id="password" type="password" name="password" [(ngModel)]="registerForm.password"/>
+    <!--<label for="passwordAgain"></label><br>-->
+    <!--<input id="passwordAgain" type="password" name="passwordAgain" [(ngModel)]="registerForm.passwordAgain"/>-->
+    <button type="button" (click)="save()">Save</button>
+</form>

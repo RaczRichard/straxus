@@ -15,7 +15,7 @@ import {ChatComponent} from './components/common/chat/chat.component';
 import {SearchComponent} from './components/common/search/search.component';
 import {TokenInterceptor} from './utils/token.interceptor';
 import {UsersComponent} from './components/admin/users/users.component';
-// import {SettingsComponent} from './components/common/setting/setting.component';
+import {SettingComponent} from './components/common/setting/setting.component';
 
 const routes: Routes = [
     {
@@ -53,11 +53,11 @@ const routes: Routes = [
         component: ChatComponent,
         canActivate: [LoggedInGuard]
     },
-    // {
-    //     path: 'setting',
-    //     component: SettingComponent,
-    //     canActivate: [LoggedInGuard]
-    // },
+    {
+        path: 'setting',
+        component: SettingComponent,
+        canActivate: [LoggedInGuard]
+    },
 ];
 
 @NgModule({
@@ -70,7 +70,7 @@ const routes: Routes = [
     ChatComponent,
     SearchComponent,
     UsersComponent,
-    // SettingComponent
+      SettingComponent
   ],
   imports: [
     BrowserModule,
