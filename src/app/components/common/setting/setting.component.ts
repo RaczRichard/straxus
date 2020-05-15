@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import SettingResponse from "../../../models/SettingResponse";
+import {Router} from '@angular/router';
+import ProfileResponse from '../../../models/ProfileResponse';
 
 
 @Component({
@@ -10,16 +11,20 @@ import SettingResponse from "../../../models/SettingResponse";
 })
 export class SettingComponent implements OnInit {
 
-    setting: SettingResponse[] = [];
+    settings: ProfileResponse;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     ngOnInit(): void {
-        this.http.get<SettingResponse[]>('http://randi/profile/get').subscribe((res) => {
-            this.setting = res;
-            console.log('befut ide');
+        this.http.get<ProfileResponse>('http://randi/profile/get').subscribe((res) => {
+            this.settings = res;
         });
     }
 
+    save() {
+        this.http.post('http://randi/profile/save', this.settings).subscribe((res) => {
+            console.log(res);
+        });
+    }
 }

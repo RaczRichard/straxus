@@ -1,4 +1,5 @@
-interface SettingResponse {
+interface ProfileResponse {
+    id: number;
     name: string;
     age: number;
     weight: number;
@@ -12,4 +13,4 @@ interface SettingResponse {
     status: number;
 }
 
-export default SettingResponse;
+export default ProfileResponse;

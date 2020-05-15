@@ -1,17 +1,18 @@
 <p>settings ben vagy</p>
-<div class="settingList">
-    <div class="setting" *ngFor="let settings of setting">
-        <span class="id">{{settings.id}}</span>
-        <span class="roleId">{{settings.username}}</span>
-        <span class="email">{{settings.address}}</span>
-        <span class="password">{{settings.height}}</span>
-        <span class="id">{{settings.weight}}</span>
-        <span class="roleId">{{settings.age}}</span>
-        <span class="email">{{settings.child}}</span>
-        <span class="password">{{settings.job}}</span>
-        <span class="id">{{settings.live}}</span>
-        <span class="roleId">{{settings.looking}}</span>
-        <span class="email">{{settings.school}}</span>
-        <span class="password">{{settings.status}}</span>
+<form>
+    <div class="settingList">
+        <div class="setting">
+            <p>Neved: <input [(ngModel)]="settings.username" type="text" id="username" name="username"></p>
+            <p>Városod: <input [(ngModel)]="settings.address" type="text" id="address" name="address"></p>
+            <p>Magasságod: <input [(ngModel)]="settings.height" type="text" id="height" name="height"></p>
+            <p>Súlyod: <input [(ngModel)]="settings.weight" type="text" id="weight" name="weight"></p>
+            <p>Korod: <input [(ngModel)]="settings.age" type="text" id="age" name="age"></p>
+            <p>Gyerek: <input [(ngModel)]="settings.child" type="text" id="child" name="child"></p>
+            <p>Foglalkozás: <input [(ngModel)]="settings.job" type="text" id="job" name="job"></p>
+            <p>Együttélés: <input [(ngModel)]="settings.live" type="text" id="live" name="live"></p>
+            <p>Mit keresek: <input [(ngModel)]="settings.looking" type="text" id="looking" name="looking"></p>
+            <p>Iskolai végzetségem: <input [(ngModel)]="settings.school" type="text" id="school" name="school"></p>
+            <button type="button" (click)="save()">Save</button>
+        </div>
     </div>
-</div>
+</form>
