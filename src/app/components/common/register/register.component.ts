@@ -24,8 +24,7 @@ export class RegisterComponent implements OnInit {
 
     save() {
         this.http.post('http://randi/auth/register', this.registerForm).subscribe((res) => {
-            this.router.navigate(['/profile']);
-            localStorage.setItem('user', JSON.stringify(res));
+            this.router.navigate(['/login']);
         });
     }
 }

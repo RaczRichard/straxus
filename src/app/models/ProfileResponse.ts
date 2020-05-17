@@ -1,8 +1,9 @@
 interface ProfileResponse {
     id: number;
-    name: string;
+    username: string;
+    gender: string;
     age: number;
-    weight: number;
+    physique: string;
     height: number;
     live: string;
     child: string;

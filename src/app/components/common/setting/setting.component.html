@@ -1,18 +1,51 @@
 <p>settings ben vagy</p>
 <form>
-    <div class="settingList">
-        <div class="setting">
-            <p>Neved: <input [(ngModel)]="settings.username" type="text" id="username" name="username"></p>
-            <p>Városod: <input [(ngModel)]="settings.address" type="text" id="address" name="address"></p>
-            <p>Magasságod: <input [(ngModel)]="settings.height" type="text" id="height" name="height"></p>
-            <p>Súlyod: <input [(ngModel)]="settings.weight" type="text" id="weight" name="weight"></p>
-            <p>Korod: <input [(ngModel)]="settings.age" type="text" id="age" name="age"></p>
-            <p>Gyerek: <input [(ngModel)]="settings.child" type="text" id="child" name="child"></p>
-            <p>Foglalkozás: <input [(ngModel)]="settings.job" type="text" id="job" name="job"></p>
-            <p>Együttélés: <input [(ngModel)]="settings.live" type="text" id="live" name="live"></p>
-            <p>Mit keresek: <input [(ngModel)]="settings.looking" type="text" id="looking" name="looking"></p>
-            <p>Iskolai végzetségem: <input [(ngModel)]="settings.school" type="text" id="school" name="school"></p>
-            <button type="button" (click)="save()">Save</button>
-        </div>
-    </div>
+
+    <label>Neved:
+        <input [(ngModel)]="settings.username" type="text" id="username" name="username"></label><br>
+
+    <label>Nemed:
+        <select type="string" id="gender" name="gender" [(ngModel)]="settings.gender">
+            <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.name}}</option>
+        </select>
+    </label>
+
+    <label>Korom:
+        <input [(ngModel)]="settings.age" type="range" id="age" name="age" min="18"
+               max="100">{{settings.age}}</label><br>
+
+    <label>Mit keresek:
+        <select [(ngModel)]="settings.looking" type="string" id="looking" name="looking">
+            <option *ngFor="let looking of lookings" [ngValue]="looking.id">{{looking.name}}</option>
+        </select>
+    </label><br>
+
+    <label>Magasságod:
+        <input [(ngModel)]="settings.height" type="range" id="height" name="height" min="50" max="230">{{settings.height}}</label><br>
+
+    <label>Testalkat:
+        <select [(ngModel)]="settings.physique" type="string" id="physique" name="physique">
+            <option *ngFor="let physique of physiques" [ngValue]="physique.id">{{physique.name}}</option>
+        </select>
+        {{settings.physique}}</label><br>
+
+    <label>Végzetségem:
+        <select [(ngModel)]="settings.school" type="string" id="school" name="name">
+            <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
+        </select>
+    </label><br>
+
+    <label>Városod:
+        <input [(ngModel)]="settings.address" type="text" id="address" name="address"></label><br>
+
+    <label>Gyerek:
+        <input [(ngModel)]="settings.child" type="text" id="child" name="child"></label><br>
+
+    <label>Foglalkozás:
+        <input [(ngModel)]="settings.job" type="text" id="job" name="job"></label><br>
+
+    <label>Együttélés:
+        <input [(ngModel)]="settings.live" type="text" id="live" name="live"></label><br>
+    <button type="button" (click)="save()">Mentés</button>
+    <button type="button" (click)="test()">test</button>
 </form>

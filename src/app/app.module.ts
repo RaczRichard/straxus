@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from './components/common/login/login.component';
 import {RegisterComponent} from './components/common/register/register.component';
 import {RouterModule, Routes} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoggedOutGuard} from './guards/logged-out.guard';
 import {ProfileComponent} from './components/common/profile/profile.component';
@@ -61,33 +61,33 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
-    MessagesComponent,
-    ChatComponent,
-    SearchComponent,
-    UsersComponent,
-      SettingComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule
-  ],
-  exports: [RouterModule],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        RegisterComponent,
+        ProfileComponent,
+        MessagesComponent,
+        ChatComponent,
+        SearchComponent,
+        UsersComponent,
+        SettingComponent,
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule
+    ],
+    exports: [RouterModule],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
