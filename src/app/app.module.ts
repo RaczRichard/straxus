@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from './components/common/login/login.component';
 import {RegisterComponent} from './components/common/register/register.component';
 import {RouterModule, Routes} from '@angular/router';
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoggedOutGuard} from './guards/logged-out.guard';
 import {ProfileComponent} from './components/common/profile/profile.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
         canActivate: [LoggedInGuard]
     },
     {
-        path: 'profile',
+        path: 'profile/:id',
         component: ProfileComponent,
         canActivate: [LoggedInGuard]
     },
@@ -49,7 +49,7 @@ const routes: Routes = [
         canActivate: [LoggedInGuard]
     },
     {
-        path: 'chat',
+        path: 'chat/:roomId',
         component: ChatComponent,
         canActivate: [LoggedInGuard]
     },

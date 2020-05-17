@@ -2,7 +2,6 @@
   <ul>
     <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
     <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" routerLinkActive="active">Register</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/profile">Profil</a></li>
     <li *ngIf="authService.isLoggedIn()"><a routerLink="/setting">Profil beállitás</a></li>
     <li *ngIf="authService.isLoggedIn()"><a routerLink="/chat-groups">Üzenetek</a></li>
     <li *ngIf="authService.isLoggedIn()"><a routerLink="/search">Keresés</a></li>

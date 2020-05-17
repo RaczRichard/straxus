@@ -1,1 +1,10 @@
-<p>search works!</p>
+<h1>Profil keresés</h1>
+<form (ngSubmit)="this.search()">
+    <input type="text" placeholder="Név" name="name" [(ngModel)]="searchForm.name">
+    <input type="submit" value="Keresés">
+</form>
+
+<h2>Results</h2>
+<div *ngFor="let profile of profiles">
+    <a routerLink="/profile/{{profile.id}}">{{profile.username}}</a>
+</div>

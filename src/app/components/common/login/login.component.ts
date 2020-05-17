@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.http.post('http://randi/auth/login', this.loginForm).subscribe((res) => {
-      this.router.navigate(['/profile']);
+        this.router.navigate(['/setting']);
       localStorage.setItem('user', JSON.stringify(res));
     });
   }
