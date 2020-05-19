@@ -39,13 +39,19 @@
         <input [(ngModel)]="settings.address" type="text" id="address" name="address"></label><br>
 
     <label>Gyerek:
-        <input [(ngModel)]="settings.child" type="text" id="child" name="child"></label><br>
+        <select [(ngModel)]="settings.child" type="string" id="child" name="child">
+            <option *ngFor="let child of childs" [ngValue]="child.id">{{child.name}}</option>
+        </select>
+    </label><br>
 
     <label>Foglalkozás:
         <input [(ngModel)]="settings.job" type="text" id="job" name="job"></label><br>
 
     <label>Együttélés:
-        <input [(ngModel)]="settings.live" type="text" id="live" name="live"></label><br>
+        <select [(ngModel)]="settings.live" type="string" id="live" name="live">
+            <option *ngFor="let live of lives" [ngValue]="live.id">{{live.name}}</option>
+        </select>
+    </label><br>
     <button type="button" (click)="save()">Mentés</button>
     <button type="button" (click)="test()">test</button>
 </form>

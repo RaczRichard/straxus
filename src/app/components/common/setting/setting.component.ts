@@ -39,18 +39,28 @@ export class SettingComponent implements OnInit {
         {id: 'Baratkozas', name: 'Barátkozás'},
     ];
     physiques = [
-        {id: 'vekony', name: 'vékony'},
-        {id: 'atlagos', name: 'átlagos'},
-        {id: 'sportos', name: 'sportos'},
-        {id: 'molett/mackos', name: 'molett/mackós'},
-        {id: 'tulsulyos', name: 'túlsúlyos'},
+        {id: 'vekony', name: 'Vékony'},
+        {id: 'atlagos', name: 'Átlagos'},
+        {id: 'sportos', name: 'Sportos'},
+        {id: 'molett/mackos', name: 'Molett/Mackós'},
+        {id: 'tulsulyos', name: 'Túlsúlyos'},
     ];
     genders = [
         {id: 'No', name: 'Nő'},
         {id: 'Ferfi', name: 'Férfi'},
     ];
     numbers: number[];
-
+    childs = [
+        {id: 'nem szeretnek', name: 'Nem szeretnék'},
+        {id: 'majd szeretnek', name: 'Majd szeretnek'},
+        {id: 'van gyerekem', name: 'Van gyerekem'},
+    ];
+    lives = [
+        {id: 'csaladdal', name: 'Családdal'},
+        {id: 'lakotarssal', name: 'Lakótárssal'},
+        {id: 'kolegium', name: 'kolegium'},
+        {id: 'egyedul', name: 'egyedül'},
+    ];
 
     constructor(private http: HttpClient, private router: Router) {
         this.numbers = new Array(100).fill(100).map((x, i) => i); // [0,1,2,3,4,...,100]

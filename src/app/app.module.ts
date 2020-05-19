@@ -16,6 +16,7 @@ import {SearchComponent} from './components/common/search/search.component';
 import {TokenInterceptor} from './utils/token.interceptor';
 import {UsersComponent} from './components/admin/users/users.component';
 import {SettingComponent} from './components/common/setting/setting.component';
+import {VerificationComponent} from './components/common/verification/verification.component';
 
 const routes: Routes = [
     {
@@ -58,6 +59,11 @@ const routes: Routes = [
         component: SettingComponent,
         canActivate: [LoggedInGuard]
     },
+    {
+        path: 'verification/:uuid',
+        component: VerificationComponent,
+        canActivate: [LoggedOutGuard]
+    },
 ];
 
 @NgModule({
@@ -71,6 +77,7 @@ const routes: Routes = [
         SearchComponent,
         UsersComponent,
         SettingComponent,
+        VerificationComponent,
     ],
     imports: [
         BrowserModule,

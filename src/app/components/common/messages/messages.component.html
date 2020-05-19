@@ -1,1 +1,6 @@
 <p>messages works!</p>
+<div *ngFor=" let room of rooms">
+    <a routerLink='/chat/{{room.roomId}}'>
+        {{room.username}}
+    </a>
+</div>

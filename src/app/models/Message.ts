@@ -1,7 +1,9 @@
 class Message {
     id: number = null;
-    pId1: number = null;
-    pId2: number = null;
+    roomId: number = null;
+    pId: number = null;
+    time: string = null;
+    msg: string = null;
 }
 
 export default Message;

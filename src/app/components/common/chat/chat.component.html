@@ -1,1 +1,8 @@
-<p>chat works!</p>
+<div *ngFor="let message of messages">
+    {{message.pId}} : {{message.msg}}
+</div>
+
+<form (ngSubmit)="this.sendMessage()">
+    <input type="text" placeholder="Üzenet" name="message" [(ngModel)]="messageForm.message">
+    <input type="submit" value="Send">
+</form>

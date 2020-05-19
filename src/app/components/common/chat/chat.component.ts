@@ -11,6 +11,11 @@ import Message from '../../../models/Message';
 })
 export class ChatComponent implements OnInit, OnDestroy {
 
+    roomId;
+    messageForm = {
+        message: null,
+        roomId: null
+    };
     messages: Message[] = [];
     interval;
 
@@ -18,16 +23,24 @@ export class ChatComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        const roomId = this.route.snapshot.paramMap.get('roomId');
+        this.roomId = this.route.snapshot.paramMap.get('roomId');
         this.interval = setInterval(() => {
-            this.http.get<Message[]>('http://randi/chat/getMessages/' + roomId).subscribe((res) => {
+            this.http.get<Message[]>('http://randi/chat/getMessages/' + this.roomId).subscribe((res) => {
                 this.messages = res;
             });
-        }, 500);
+        }, 2000);
     }
 
     ngOnDestroy(): void {
         clearInterval(this.interval);
+    }
+
+    sendMessage() {
+        this.messageForm.roomId = this.roomId;
+        console.log('this.messageForm', this.messageForm);
+        this.http.post('http://randi/chat/sendMessage', this.messageForm).subscribe((res) => {
+            this.messageForm.message = null;
+        });
     }
 
 }
