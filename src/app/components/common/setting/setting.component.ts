@@ -25,6 +25,7 @@ export class SettingComponent implements OnInit {
         school: null,
         status: null,
         gender: null,
+        picture: null,
     };
 
     schools = [
@@ -68,18 +69,23 @@ export class SettingComponent implements OnInit {
 
     ngOnInit(): void {
         this.http.get<ProfileResponse>('http://randi/profile/get').subscribe((res) => {
-            console.log('erről van szó:', res);
             this.settings = res;
         });
+    }
+
+    handleUpload(event) {
+        const file = event.target.files[0];
+        this.settings.picture = new FileReader();
+        this.settings.picture.readAsDataURL(file);
+        console.log('kép értéke', this.settings.picture);
+        this.settings.picture.onload = () => {
+            console.log(this.settings.picture.result);
+        };
     }
 
     save() {
         this.http.post('http://randi/profile/save', this.settings).subscribe((res) => {
             console.log(res);
         });
-    }
-
-    test() {
-        console.log(this.settings);
     }
 }

@@ -52,6 +52,10 @@
             <option *ngFor="let live of lives" [ngValue]="live.id">{{live.name}}</option>
         </select>
     </label><br>
+    <label>Képfeltöltés:
+        <input id="picture" name="picture" type="file" (change)="handleUpload($event)"><br>
+    </label>
     <button type="button" (click)="save()">Mentés</button>
-    <button type="button" (click)="test()">test</button>
 </form>
+
+<label>Kép:{{settings.picture}}</label>

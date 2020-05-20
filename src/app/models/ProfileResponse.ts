@@ -12,6 +12,7 @@ interface ProfileResponse {
     address: string;
     looking: string;
     status: number;
+    picture: any;
 }
 
 export default ProfileResponse;

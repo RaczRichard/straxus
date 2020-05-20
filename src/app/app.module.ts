@@ -17,6 +17,7 @@ import {TokenInterceptor} from './utils/token.interceptor';
 import {UsersComponent} from './components/admin/users/users.component';
 import {SettingComponent} from './components/common/setting/setting.component';
 import {VerificationComponent} from './components/common/verification/verification.component';
+import {PasswordComponent} from './components/common/password/password.component';
 
 const routes: Routes = [
     {
@@ -64,6 +65,11 @@ const routes: Routes = [
         component: VerificationComponent,
         canActivate: [LoggedOutGuard]
     },
+    {
+        path: 'password',
+        component: PasswordComponent,
+        canActivate: [LoggedOutGuard]
+    },
 ];
 
 @NgModule({
@@ -78,6 +84,7 @@ const routes: Routes = [
         UsersComponent,
         SettingComponent,
         VerificationComponent,
+        PasswordComponent,
     ],
     imports: [
         BrowserModule,

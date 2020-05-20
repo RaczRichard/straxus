@@ -23,7 +23,8 @@ export class ProfileComponent implements OnInit {
         physique: null,
         school: null,
         status: null,
-        username: null
+        username: null,
+        picture: null,
     };
 
     constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
