@@ -18,6 +18,8 @@ import {UsersComponent} from './components/admin/users/users.component';
 import {SettingComponent} from './components/common/setting/setting.component';
 import {VerificationComponent} from './components/common/verification/verification.component';
 import {PasswordComponent} from './components/common/password/password.component';
+import {UserComponent} from './components/common/user/user.component';
+import {GameComponent} from './components/common/game/game.component';
 
 const routes: Routes = [
     {
@@ -70,6 +72,16 @@ const routes: Routes = [
         component: PasswordComponent,
         canActivate: [LoggedOutGuard]
     },
+    {
+        path: 'user',
+        component: UserComponent,
+        canActivate: [LoggedInGuard]
+    },
+    {
+        path: 'game',
+        component: GameComponent,
+        canActivate: [LoggedInGuard]
+    },
 ];
 
 @NgModule({
@@ -85,6 +97,8 @@ const routes: Routes = [
         SettingComponent,
         VerificationComponent,
         PasswordComponent,
+        UserComponent,
+        GameComponent,
     ],
     imports: [
         BrowserModule,

@@ -17,6 +17,8 @@ export class VerificationComponent implements OnInit {
         uuid: null
     };
 
+    uuid: string;
+
     constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     }
 
@@ -24,8 +26,14 @@ export class VerificationComponent implements OnInit {
         const uuid = this.route.snapshot.paramMap.get('uuid');
         this.http.get<Verification>('http://randi/auth/verification/' + uuid).subscribe((res) => {
             this.verification = res;
-            console.log(res);
+            this.uuid = this.route.parent.snapshot.url[3].path;
+            console.log('res: ', this.verification);
+            console.log('uuid: ', this.uuid);
         });
+        console.log('sikerült: ', this.route.snapshot.paramMap.get('uuid'));
+        console.log('uuid: ', this.uuid);
+        console.log('path módszer: ', this.route.parent.snapshot.url[2].path);
+
     }
 
 }

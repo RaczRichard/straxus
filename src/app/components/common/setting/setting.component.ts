@@ -11,6 +11,9 @@ import ProfileResponse from '../../../models/ProfileResponse';
 })
 
 export class SettingComponent implements OnInit {
+
+    loadedBase64;
+
     settings: ProfileResponse = {
         id: null,
         username: null,
@@ -25,7 +28,13 @@ export class SettingComponent implements OnInit {
         school: null,
         status: null,
         gender: null,
-        picture: null,
+        picturePath: null,
+    };
+
+    request = {
+        settings: null,
+        fileName: '',
+        base64: ''
     };
 
     schools = [
@@ -70,21 +79,32 @@ export class SettingComponent implements OnInit {
     ngOnInit(): void {
         this.http.get<ProfileResponse>('http://randi/profile/get').subscribe((res) => {
             this.settings = res;
+            console.log('profilResponse értékei: ', this.settings);
+            console.log('picturePath : ', this.settings.picturePath);
+            if (res.picturePath && res.picturePath.length > 0) {
+                this.http.get('http://randi/picture/get/' + res.picturePath).subscribe((base64) => {
+                    this.loadedBase64 = base64;
+                    console.log('Base64: ', this.loadedBase64);
+                });
+            }
         });
     }
 
     handleUpload(event) {
         const file = event.target.files[0];
-        this.settings.picture = new FileReader();
-        this.settings.picture.readAsDataURL(file);
-        console.log('kép értéke', this.settings.picture);
-        this.settings.picture.onload = () => {
-            console.log(this.settings.picture.result);
+        this.request.fileName = file.name;
+        const fr = new FileReader();
+        fr.readAsDataURL(file);
+
+        fr.onload = (e) => {
+            this.request.base64 = fr.result.toString();
+            this.loadedBase64 = this.request.base64;
         };
     }
 
     save() {
-        this.http.post('http://randi/profile/save', this.settings).subscribe((res) => {
+        this.request.settings = this.settings;
+        this.http.post('http://randi/profile/save', this.request).subscribe((res) => {
             console.log(res);
         });
     }

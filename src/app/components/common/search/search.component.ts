@@ -9,6 +9,7 @@ import ProfileResponse from '../../../models/ProfileResponse';
 })
 export class SearchComponent implements OnInit {
 
+
     searchForm = {
         name: null,
         age: 0

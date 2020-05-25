@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
         school: null,
         status: null,
         username: null,
-        picture: null,
+        picturePath: null,
     };
 
     constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {

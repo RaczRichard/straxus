@@ -8,11 +8,12 @@
         <select type="string" id="gender" name="gender" [(ngModel)]="settings.gender">
             <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.name}}</option>
         </select>
-    </label>
+    </label><br>
 
     <label>Korom:
         <input [(ngModel)]="settings.age" type="range" id="age" name="age" min="18"
-               max="100">{{settings.age}}</label><br>
+               max="100">{{settings.age}}
+    </label><br>
 
     <label>Mit keresek:
         <select [(ngModel)]="settings.looking" type="string" id="looking" name="looking">
@@ -57,5 +58,5 @@
     </label>
     <button type="button" (click)="save()">Mentés</button>
 </form>
-
-<label>Kép:{{settings.picture}}</label>
+<img *ngIf="loadedBase64" src="{{loadedBase64}}" width="250" height="250">
+<!--<label>Kép:{{settings.picture}}</label>-->

@@ -1,0 +1,24 @@
+<p>game works!</p>
+<form>
+    <h1>Kit keresek: </h1>
+    <label>Nemed:
+        <select type="string" id="gender" name="gender" [(ngModel)]="gameForm.gender">
+            <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.name}}</option>
+        </select>
+    </label><br>
+    <label>Kortól:
+        <input id="tol" name="tol" type="text" [(ngModel)]="gameForm.tol"></label>{{gameForm.tol}}<br>
+    <label>Korig:
+        <input id="ig" name="ig" type="text" [(ngModel)]="gameForm.ig"></label>{{gameForm.ig}}<br>
+    <button type="button" (click)="search()">Keresés</button>
+</form>
+<div *ngFor="let likee of likeeList">
+    {{likee.username}}
+    <img *ngIf="loadedBase64" src="{{loadedBase64}}" width="250" height="250">
+</div>
+<form>
+
+    <br>
+    <button type="button" (click)="notLike()">Nem tetszik</button>
+    <button type="button" (click)="like()">Tetszik</button>
+</form>

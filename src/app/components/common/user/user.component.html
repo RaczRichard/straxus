@@ -1,0 +1,23 @@
+<p>user works!</p>
+<form>
+    <h1>Email váltás</h1>
+    <input id="email" name="email" type="text" [(ngModel)]="emailForm.email"/><br>
+    <label>
+        <button type="button" (click)="changeEmail()">Email Váltás</button>
+    </label>
+</form>
+<form>
+    <h1>Jelszó Változtatás</h1><br>
+    <label>Jelenlegi jelszó: </label>
+    <input id="old" name="old" type="text" [(ngModel)]="passForm.old"/>{{passForm.old}}
+    <br>
+    <label>Új jelszó:</label>
+    <input id="newPass" name="newPass" type="text" [(ngModel)]="passForm.newPass"/>{{passForm.newPass}}
+    <br>
+    <label>Új jelszó újra:</label>
+    <input id="again" name="again" type="text" [(ngModel)]="passForm.again"/>{{passForm.again}}
+    <br>
+    <label>
+        <button type="button" (click)="changePass()">Jelszó Váltás</button>
+    </label>
+</form>

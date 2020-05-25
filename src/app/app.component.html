@@ -1,12 +1,16 @@
 <nav>
+  <!--kilogolva-->
   <ul>
     <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
     <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" routerLinkActive="active">Register</a></li>
     <li *ngIf="!authService.isLoggedIn()"><a routerLink="/password" routerLinkActive="active">Elfelejtett jelszó</a>
     </li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/setting">Profil beállitás</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/chat-groups">Üzenetek</a></li>
+    <!--belogolva-->
     <li *ngIf="authService.isLoggedIn()"><a routerLink="/search">Keresés</a></li>
+    <li *ngIf="authService.isLoggedIn()"><a routerLink="/chat-groups">Üzenetek</a></li>
+    <li *ngIf="authService.isLoggedIn()"><a routerLink="/setting">Profil beállitás</a></li>
+    <li *ngIf="authService.isLoggedIn()"><a routerLink="/game">Randi Játék</a></li>
+    <li *ngIf="authService.isLoggedIn()"><a routerLink="/user">Felhasználó Beállitásai</a></li>
     <li *ngIf="authService.isLoggedIn()"><a routerLink="/admin/users">Felhasználók kezelése</a></li>
     <li *ngIf="authService.isLoggedIn()" (click)="authService.logout()"><a>Kilépés</a></li>
   </ul>

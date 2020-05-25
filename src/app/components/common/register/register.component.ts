@@ -11,8 +11,9 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
 
     registerForm = {
-        email: '',
-        password: '',
+        email: null,
+        password: null,
+        passwordAgain: null,
     };
 
     public constructor(private http: HttpClient, private router: Router) {
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
     save() {
         this.http.post('http://randi/auth/register', this.registerForm).subscribe((res) => {
             this.router.navigate(['/login']);
+            console.log('Email: ', this.registerForm.email);
         });
     }
 }
