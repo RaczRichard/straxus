@@ -15,9 +15,7 @@ export class UserComponent implements OnInit {
         again: null,
     };
 
-    emailForm = {
-        email: null,
-    }
+    errorMsg = null;
 
     constructor(private http: HttpClient, private router: Router) {
     }
@@ -28,13 +26,9 @@ export class UserComponent implements OnInit {
     changePass() {
         this.http.post('http://randi/auth/passwordChange', this.passForm).subscribe((res) => {
             console.log('new pass: ', this.passForm);
+        }, (err) => {
+            console.log(err);
+            this.errorMsg = err.error.message;
         });
     }
-
-    changeEmail() {
-        this.http.post('http://randi/auth/emailChange', this.emailForm).subscribe((res) => {
-            console.log('new pass: ', this.emailForm);
-        });
-    }
-
 }

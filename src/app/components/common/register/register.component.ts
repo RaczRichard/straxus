@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
         passwordAgain: null,
     };
 
+    errorMsg = null;
+
     public constructor(private http: HttpClient, private router: Router) {
 
     }
@@ -27,6 +29,9 @@ export class RegisterComponent implements OnInit {
         this.http.post('http://randi/auth/register', this.registerForm).subscribe((res) => {
             this.router.navigate(['/login']);
             console.log('Email: ', this.registerForm.email);
+        }, (err) => {
+            console.log(err);
+            this.errorMsg = err.error.message;
         });
     }
 }

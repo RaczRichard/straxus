@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
         password: ''
     };
 
+    errorMsg = null;
+
+
     constructor(private http: HttpClient, private router: Router) {
     }
 
@@ -24,6 +27,9 @@ export class LoginComponent implements OnInit {
         this.http.post('http://randi/auth/login', this.loginForm).subscribe((res) => {
             this.router.navigate(['/setting']);
             localStorage.setItem('user', JSON.stringify(res));
+        }, (err) => {
+            console.log(err);
+            this.errorMsg = err.error.message;
         });
     }
 }

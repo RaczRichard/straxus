@@ -59,7 +59,7 @@ export class SettingComponent implements OnInit {
         {id: 'No', name: 'Nő'},
         {id: 'Ferfi', name: 'Férfi'},
     ];
-    numbers: number[];
+
     childs = [
         {id: 'nem szeretnek', name: 'Nem szeretnék'},
         {id: 'majd szeretnek', name: 'Majd szeretnek'},
@@ -73,7 +73,7 @@ export class SettingComponent implements OnInit {
     ];
 
     constructor(private http: HttpClient, private router: Router) {
-        this.numbers = new Array(100).fill(100).map((x, i) => i); // [0,1,2,3,4,...,100]
+        // this.numbers = new Array(100).fill(100).map((x, i) => i); // [0,1,2,3,4,...,100]
     }
 
     ngOnInit(): void {
@@ -81,12 +81,6 @@ export class SettingComponent implements OnInit {
             this.settings = res;
             console.log('profilResponse értékei: ', this.settings);
             console.log('picturePath : ', this.settings.picturePath);
-            if (res.picturePath && res.picturePath.length > 0) {
-                this.http.get('http://randi/picture/get/' + res.picturePath).subscribe((base64) => {
-                    this.loadedBase64 = base64;
-                    console.log('Base64: ', this.loadedBase64);
-                });
-            }
         });
     }
 
@@ -103,7 +97,7 @@ export class SettingComponent implements OnInit {
     }
 
     save() {
-        this.request.settings = this.settings;
+        this.request.settings = this.settings; // lefut jól.
         this.http.post('http://randi/profile/save', this.request).subscribe((res) => {
             console.log(res);
         });

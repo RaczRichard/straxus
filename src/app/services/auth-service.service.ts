@@ -14,6 +14,16 @@ export class AuthServiceService {
         return !!localStorage.getItem('user');
     }
 
+    isAdmin(): boolean {
+        const token = this.getToken();
+        try {
+            const parsedToken = JSON.parse(atob(token.split('.')[1]));
+            return parsedToken.role === '1';
+        } catch (e) {
+            return false;
+        }
+    }
+
     logout(): void {
         localStorage.removeItem('user');
         this.router.navigate(['/login']);

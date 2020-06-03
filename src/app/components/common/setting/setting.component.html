@@ -1,62 +1,76 @@
-<p>settings ben vagy</p>
-<form>
+<div align="center">
+    <img src="http://randi/picture/get/{{settings.picturePath}}" width="250" height="250">
+    <form class="col-sm-4">
 
-    <label>Neved:
-        <input [(ngModel)]="settings.username" type="text" id="username" name="username"></label><br>
+        <div class="form-group">
+            <label for="username">Neved:</label>
+            <input type="text" class="form-control" name="username" id="username" aria-describedby="address"
+                   placeholder="Felhasználó név" [(ngModel)]="settings.username"/>
+        </div>
+        <div class="form-group">
+            <label for="gender">Nemem:</label>
+            <select type="string" class="form-control" id="gender" name="gender" [(ngModel)]="settings.gender">
+                <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="age">Korom: </label>
+            <input [(ngModel)]="settings.age" type="range" class="age" name="age" id="age" min="18" max="100"/>{{settings.age}}
+        </div>
+        <div class="form-group">
+            <label for="looking">Mit keresek: </label>
+            <select type="string" class="form-control" id="looking" name="looking" [(ngModel)]="settings.looking">
+                <option *ngFor="let looking of lookings" [ngValue]="looking.id">{{looking.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="height">Magasságom: </label>
+            <input [(ngModel)]="settings.height" type="range" class="height" name="height" id="height" min="100"
+                   max="220"/>{{settings.height}}
+        </div>
+        <div class="form-group">
+            <label for="physique">Testalkatom: </label>
+            <select type="string" class="form-control" id="physique" name="physique" [(ngModel)]="settings.physique">
+                <option *ngFor="let physique of physiques" [ngValue]="physique.id">{{physique.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="school">Végzetségem: </label>
+            <select type="string" class="form-control" id="school" name="school" [(ngModel)]="settings.school">
+                <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Lakhelyem:</label>
+            <input type="text" class="form-control" name="address" id="address" aria-describedby="address"
+                   placeholder="Lakhelyed" [(ngModel)]="settings.address"/>
+        </div>
+        <div class="form-group">
+            <label for="child">Gyerek kérdése: </label>
+            <select type="string" class="form-control" id="child" name="child" [(ngModel)]="settings.child">
+                <option *ngFor="let child of childs" [ngValue]="child.id">{{child.name}}</option>
+            </select>
+        </div>
 
-    <label>Nemed:
-        <select type="string" id="gender" name="gender" [(ngModel)]="settings.gender">
-            <option *ngFor="let gender of genders" [ngValue]="gender.id">{{gender.name}}</option>
-        </select>
-    </label><br>
+        <div class="form-group">
+            <label for="job">Foglalkozásom:</label>
+            <input type="text" class="form-control" name="job" id="job" aria-describedby="job"
+                   placeholder="Foglalkozásod" [(ngModel)]="settings.job"/>
+        </div>
+        <div class="form-group">
+            <label for="live">Együttélés: </label>
+            <select type="string" class="form-control" id="live" name="live" [(ngModel)]="settings.live">
+                <option *ngFor="let live of lives" [ngValue]="live.id">{{live.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="picture">Képfeltöltés: </label>
+            <input type="file" class="form-control-file" id="picture" name="picture" (change)="handleUpload($event)"/>
+        </div>
+        <button class="btn btn-success" type="button" (click)="save()">Mentés</button>
 
-    <label>Korom:
-        <input [(ngModel)]="settings.age" type="range" id="age" name="age" min="18"
-               max="100">{{settings.age}}
-    </label><br>
+    </form>
+</div>
 
-    <label>Mit keresek:
-        <select [(ngModel)]="settings.looking" type="string" id="looking" name="looking">
-            <option *ngFor="let looking of lookings" [ngValue]="looking.id">{{looking.name}}</option>
-        </select>
-    </label><br>
 
-    <label>Magasságod:
-        <input [(ngModel)]="settings.height" type="range" id="height" name="height" min="50" max="230">{{settings.height}}</label><br>
 
-    <label>Testalkat:
-        <select [(ngModel)]="settings.physique" type="string" id="physique" name="physique">
-            <option *ngFor="let physique of physiques" [ngValue]="physique.id">{{physique.name}}</option>
-        </select>
-        {{settings.physique}}</label><br>
-
-    <label>Végzetségem:
-        <select [(ngModel)]="settings.school" type="string" id="school" name="name">
-            <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
-        </select>
-    </label><br>
-
-    <label>Városod:
-        <input [(ngModel)]="settings.address" type="text" id="address" name="address"></label><br>
-
-    <label>Gyerek:
-        <select [(ngModel)]="settings.child" type="string" id="child" name="child">
-            <option *ngFor="let child of childs" [ngValue]="child.id">{{child.name}}</option>
-        </select>
-    </label><br>
-
-    <label>Foglalkozás:
-        <input [(ngModel)]="settings.job" type="text" id="job" name="job"></label><br>
-
-    <label>Együttélés:
-        <select [(ngModel)]="settings.live" type="string" id="live" name="live">
-            <option *ngFor="let live of lives" [ngValue]="live.id">{{live.name}}</option>
-        </select>
-    </label><br>
-    <label>Képfeltöltés:
-        <input id="picture" name="picture" type="file" (change)="handleUpload($event)"><br>
-    </label>
-    <button type="button" (click)="save()">Mentés</button>
-</form>
-<img *ngIf="loadedBase64" src="{{loadedBase64}}" width="250" height="250">
-<!--<label>Kép:{{settings.picture}}</label>-->

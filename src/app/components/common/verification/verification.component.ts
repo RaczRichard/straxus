@@ -17,6 +17,8 @@ export class VerificationComponent implements OnInit {
         uuid: null
     };
 
+    errorMsg = null;
+
     uuid: string;
 
     constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
@@ -29,10 +31,11 @@ export class VerificationComponent implements OnInit {
             this.uuid = this.route.parent.snapshot.url[3].path;
             console.log('res: ', this.verification);
             console.log('uuid: ', this.uuid);
+        }, (err) => {
+            this.errorMsg = err;
+            console.log(err);
         });
         console.log('sikerült: ', this.route.snapshot.paramMap.get('uuid'));
-        console.log('uuid: ', this.uuid);
-        console.log('path módszer: ', this.route.parent.snapshot.url[2].path);
 
     }
 

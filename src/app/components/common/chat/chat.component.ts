@@ -10,7 +10,6 @@ import Message from '../../../models/Message';
     styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, OnDestroy {
-
     roomId;
     messageForm = {
         message: null,

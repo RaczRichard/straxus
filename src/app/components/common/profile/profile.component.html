@@ -1,6 +1,6 @@
-<p> settings rész:</p>
-<div>
-
+<p> Beállitások rész:</p>
+<div align="center">
+    <button class="btn btn-dark" (click)="openChat()">chat</button>
     <div><label>Név: {{profile.username}}</label></div>
     <div><label>Kor: {{profile.age}}</label></div>
     <div><label>Neme: {{profile.gender}}</label></div>
@@ -12,6 +12,5 @@
     <div><label>Munka: {{profile.job}}</label></div>
     <div><label>Gyerek: {{profile.child}}</label></div>
     <div><label>Együttélés: {{profile.live}}</label></div>
-    <input type="file" name="picture" id="picture">
-    <button (click)="openChat()">chat</button>
+    <img src="http://randi/picture/get/{{profile.picturePath}}" width="250" height="250">
 </div>

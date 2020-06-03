@@ -1,10 +1,14 @@
-<h1>Profil keresés</h1>
-<form (ngSubmit)="this.search()">
-    <input type="text" placeholder="Név" name="name" [(ngModel)]="searchForm.name">
-    <input type="submit" value="Keresés">
-</form>
-
-<h2>Results</h2>
-<div *ngFor="let profile of profiles">
-    <a routerLink="/profile/{{profile.id}}">{{profile.username}}</a>
+<div align="center">
+    <h1>Profil keresés</h1>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
+                   placeholder="Keresett személy neve" [(ngModel)]="searchForm.name"/>
+            <button class="btn btn-success" type="button" (click)="search()">Keresés</button>
+        </div>
+    </div>
+    <h2>Keresés eredménye:</h2>
+    <div *ngFor="let profile of profiles">
+        <a class="btn btn-success" routerLink="/profile/{{profile.id}}">{{profile.username}}</a>
+    </div>
 </div>

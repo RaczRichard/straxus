@@ -9,7 +9,10 @@ import ProfileResponse from '../../../models/ProfileResponse';
     styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-    loadedBase64;
+
+    matchFrom = [{
+        name: null,
+    }];
 
     gameForm = {
         gender: null,
@@ -17,25 +20,12 @@ export class GameComponent implements OnInit {
         ig: null,
     };
 
+    limit = 0;
+    matchList: ProfileResponse[] = [];
+    profileList: ProfileResponse[];
 
-    likeeList: ProfileResponse[] = [{
-        id: null,
-        username: null,
-        address: null,
-        height: null,
-        physique: null,
-        age: null,
-        child: null,
-        job: null,
-        live: null,
-        looking: null,
-        school: null,
-        status: null,
-        gender: null,
-        picturePath: null,
-    }];
-
-    picturePath = null;
+    seged = 0;
+    currentIndex = 0;
 
     genders = [
         {id: 'No', name: 'Nő'},
@@ -47,34 +37,41 @@ export class GameComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.http.post<ProfileResponse[]>('http://randi/game/gameSearch').subscribe((res) => {
-            this.settings = res;
-            console.log('profilResponse értékei: ', this.likeeList);
-            console.log('picturePath : ', this.likeeList.picturePath);
-            this.http.post('http://randi/picture/get/' + res.picturePath).subscribe((base64) => {
-                this.loadedBase64 = base64;
-                console.log('Base64: ', this.loadedBase64);
-            });
+        this.http.post<ProfileResponse[]>('http://randi/game/get', this.matchList).subscribe((res) => {
+            this.matchList = res;
+            this.seged = 0;
         });
+
     }
+
 
     search() {
         this.http.post<ProfileResponse[]>('http://randi/game/searchGame', this.gameForm).subscribe((res) => {
-            console.log('Keresési feltétel: ', this.gameForm);
-            this.likeeList = res;
-            console.log('likelist: ', this.likeeList);
-            this.http.get('http://randi/picture/get/' + res.picturePath).subscribe((base64) => {
-                this.loadedBase64 = base64;
-                console.log('Base64: ', this.loadedBase64);
-            });
+            // console.log('Keresési feltétel: ', this.gameForm);
+            console.log('res: ', res);
+            this.profileList = res;
+            this.limit = this.profileList.length;
+            this.seged = 1;
         });
+
     }
 
     like() {
-        console.log('like');
+        console.log('currentIndex: ', this.profileList[this.currentIndex].id);
+        this.http.post<number>('http://randi/game/likee', this.profileList[this.currentIndex]).subscribe((res) => {
+            console.log('amit elküld: ', this.profileList[this.currentIndex - 1].id);
+        });
+        this.currentIndex++;
+        if (this.currentIndex === this.limit) {
+            this.currentIndex = 0;
+        }
     }
 
-    notLike() {
-        console.log('notLike');
+
+    disLike() {
+        if (this.currentIndex === this.limit) {
+            this.currentIndex = 0;
+        }
+        this.currentIndex++;
     }
 }

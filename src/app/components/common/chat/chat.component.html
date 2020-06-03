@@ -1,8 +1,11 @@
-<div *ngFor="let message of messages">
-    {{message.pId}} : {{message.msg}}
+<div align="center" *ngFor="let message of messages">
+    {{message.username}} : {{message.msg}}
 </div>
 
 <form (ngSubmit)="this.sendMessage()">
-    <input type="text" placeholder="Üzenet" name="message" [(ngModel)]="messageForm.message">
-    <input type="submit" value="Send">
+    <div class="form-group">
+        <input type="text" class="form-control" name="message" id="message" aria-describedby="emailHelp"
+               placeholder="Üzenet"
+               [(ngModel)]="messageForm.message">
+    </div>
 </form>

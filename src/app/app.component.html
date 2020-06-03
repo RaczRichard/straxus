@@ -1,18 +1,42 @@
 <nav>
-  <!--kilogolva-->
-  <ul>
-    <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
-    <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" routerLinkActive="active">Register</a></li>
-    <li *ngIf="!authService.isLoggedIn()"><a routerLink="/password" routerLinkActive="active">Elfelejtett jelszó</a>
-    </li>
-    <!--belogolva-->
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/search">Keresés</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/chat-groups">Üzenetek</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/setting">Profil beállitás</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/game">Randi Játék</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/user">Felhasználó Beállitásai</a></li>
-    <li *ngIf="authService.isLoggedIn()"><a routerLink="/admin/users">Felhasználók kezelése</a></li>
-    <li *ngIf="authService.isLoggedIn()" (click)="authService.logout()"><a>Kilépés</a></li>
-  </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!--kilogolva-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active" *ngIf="!authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Bejelentkezés<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active" *ngIf="!authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/register" routerLinkActive="active">Regisztráció</a>
+                </li>
+                <li class="nav-item active" *ngIf="!authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/password" routerLinkActive="active">Elfelejtett jelszó</a>
+                </li>
+                <!--Belogolva-->
+                <li class="nav-item active" *ngIf="authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/setting" routerLinkActive="active">Profil</a>
+                </li>
+                <li class="nav-item active" *ngIf="authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/search" routerLinkActive="active">Keresés</a>
+                </li>
+                <li class="nav-item active" *ngIf="authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/game" routerLinkActive="active">Randi Játék</a>
+                </li>
+                <li class="nav-item active" *ngIf="authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/chat-groups" routerLinkActive="active">Üzenetek</a>
+                </li>
+                <li class="nav-item active" *ngIf="authService.isLoggedIn()">
+                    <a class="nav-link" routerLink="/user" routerLinkActive="active">Felhasználó Beállitásai</a>
+                </li>
+                <li class="nav-item active" *ngIf="authService.isAdmin()">
+                    <a class="nav-link" routerLink="/admin/users" routerLinkActive="active">Felhasználók Kerezelése</a>
+                </li>
+                <li class="nav-item active" *ngIf="authService.isLoggedIn()">
+                    <a class="nav-link" (click)="authService.logout()">Kilépés</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </nav>
 <router-outlet></router-outlet>

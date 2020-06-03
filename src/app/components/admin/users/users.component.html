@@ -1,8 +1,8 @@
-<div class="userList">
+<div class="userList" align="center">
   <div class="user" *ngFor="let user of users">
-    <span class="id">{{user.id}}</span>
-    <span class="roleId">{{user.roleId}}</span>
-    <span class="email">{{user.email}}</span>
-    <span class="password">{{user.password}}</span>
+    <span class="id">id: {{user.id}} </span>
+    <span class="roleId">role-id: {{user.roleId}} </span>
+    <span class="email">email: {{user.email}} </span>
+    <button class="btn btn-danger" type="button" (click)="delete(user.id)">Törlés</button>
   </div>
 </div>

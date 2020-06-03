@@ -1,10 +1,22 @@
-<p>register works!</p>
-<form>
-    <label for="email">Email: </label>
-    <input id="email" type="text" name="email" [(ngModel)]="registerForm.email"/><br>
-    <label for="password">Jelszó: </label>
-    <input id="password" type="password" name="password" [(ngModel)]="registerForm.password"/><br>
-    <label for="passwordAgain">Jelszó újra: </label>
-    <input id="passwordAgain" type="password" name="passwordAgain" [(ngModel)]="registerForm.passwordAgain"/><br>
-    <button type="button" (click)="save()">Save</button>
-</form>
+<div align="center">
+    <form class="col-sm-4">
+        <div class="form-group">
+            <label for="email">E-mail cimed:</label>
+            <input type="text" class="form-control" name="email" id="email" aria-describedby="email" placeholder="@"
+                   [(ngModel)]="registerForm.email"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Jelszó:</label>
+            <input type="password" class="form-control" name="id" id="password" placeholder="Jelszó"
+                   [(ngModel)]="registerForm.password">
+        </div>
+        <div class="form-group">
+            <label for="passwordAgain">Jelszó újra:</label>
+            <input type="password" class="form-control" name="passwordAgain" id="passwordAgain"
+                   placeholder="Jelszó újra"
+                   [(ngModel)]="registerForm.passwordAgain">
+        </div>
+        <button class="btn btn-success" type="button" (click)="save()">Regisztráció</button>
+    </form>
+    {{errorMsg}}
+</div>

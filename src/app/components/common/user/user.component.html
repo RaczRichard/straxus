@@ -1,23 +1,21 @@
-<p>user works!</p>
 <form>
-    <h1>Email váltás</h1>
-    <input id="email" name="email" type="text" [(ngModel)]="emailForm.email"/><br>
-    <label>
-        <button type="button" (click)="changeEmail()">Email Váltás</button>
-    </label>
+    <div align="center">
+        <h1>Jelszó Változtatás</h1><br>
+        <div class="form-group">
+            <label for="old">Jelenlegi jelszó: </label>
+            <input [(ngModel)]="passForm.old" type="text" class="old" name="old" id="old"/>
+        </div>
+
+        <div class="form-group">
+            <label for="newPass">Új jelszó: </label>
+            <input [(ngModel)]="passForm.newPass" type="text" class="newPass" name="newPass" id="newPass"/>
+        </div>
+
+        <div class="form-group">
+            <label for="again">Új jelszó újra: </label>
+            <input [(ngModel)]="passForm.again" type="text" class="again" name="again" id="again"/>
+        </div>
+        <button class="btn btn-success" type="button" (click)="changePass()">Jelszó Váltás</button>
+    </div>
 </form>
-<form>
-    <h1>Jelszó Változtatás</h1><br>
-    <label>Jelenlegi jelszó: </label>
-    <input id="old" name="old" type="text" [(ngModel)]="passForm.old"/>{{passForm.old}}
-    <br>
-    <label>Új jelszó:</label>
-    <input id="newPass" name="newPass" type="text" [(ngModel)]="passForm.newPass"/>{{passForm.newPass}}
-    <br>
-    <label>Új jelszó újra:</label>
-    <input id="again" name="again" type="text" [(ngModel)]="passForm.again"/>{{passForm.again}}
-    <br>
-    <label>
-        <button type="button" (click)="changePass()">Jelszó Váltás</button>
-    </label>
-</form>
+<div align="center">{{errorMsg}}</div>

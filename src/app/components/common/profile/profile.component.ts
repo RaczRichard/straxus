@@ -38,7 +38,6 @@ export class ProfileComponent implements OnInit {
     }
 
     openChat(): void {
-
         this.http.get<ProfileResponse>('http://randi/chat/getRoomId/' + this.profile.id).subscribe((chatId) => {
             this.router.navigate(['/chat/' + chatId]);
         });

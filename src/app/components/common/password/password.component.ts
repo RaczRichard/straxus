@@ -14,6 +14,8 @@ export class PasswordComponent implements OnInit {
         email: ''
     };
 
+    errorMsg = null;
+
     constructor(private http: HttpClient, private router: Router) {
     }
 
@@ -24,6 +26,9 @@ export class PasswordComponent implements OnInit {
         this.http.post('http://randi/auth/reset', this.resetForm).subscribe((res) => {
             this.router.navigate(['/login']);
             console.log('email: ', this.resetForm.email);
+        }, (err) => {
+            console.log(err);
+            this.errorMsg = err.error.message;
         });
     }
 }
