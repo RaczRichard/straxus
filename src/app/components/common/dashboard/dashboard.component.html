@@ -1,0 +1,12 @@
+<div class="list" align="center">
+    <div class="user" *ngFor="let user of users">
+        <span class="id">id: {{user.id}} </span> <br>
+        <span class="username">username: {{user.username}} </span><br>
+
+        <span class="loggedTime">Legutolsó bejelentkezés: {{user.loggedTime}} </span><br>
+    </div>
+    <span class="roleName">Jogosultság:</span>
+    <div class="user" *ngFor="let permission of permissions">
+        {{permission.rolename}}
+    </div>
+</div>
