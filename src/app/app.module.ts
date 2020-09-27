@@ -1,25 +1,22 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {NgxCaptchaModule} from 'ngx-captcha';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/common/login/login.component';
-import {RegisterComponent} from './components/common/register/register.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoggedOutGuard} from './guards/logged-out.guard';
-import {ProfileComponent} from './components/common/profile/profile.component';
 import {LoggedInGuard} from './guards/logged-in.guard';
-import {MessagesComponent} from './components/common/messages/messages.component';
-import {ChatComponent} from './components/common/chat/chat.component';
-import {SearchComponent} from './components/common/search/search.component';
 import {TokenInterceptor} from './utils/token.interceptor';
-import {UsersComponent} from './components/admin/users/users.component';
-import {SettingComponent} from './components/common/setting/setting.component';
-import {VerificationComponent} from './components/common/verification/verification.component';
-import {PasswordComponent} from './components/common/password/password.component';
+import {AdminComponent} from './components/common/admin/admin.component';
 import {UserComponent} from './components/common/user/user.component';
-import {GameComponent} from './components/common/game/game.component';
+import {EditorComponent} from './components/common/editor/editor.component';
+import {DashboardComponent} from './components/common/dashboard/dashboard.component';
+import {BotDetectCaptchaModule} from 'angular-captcha';
+import {RoleGuard} from "./guards/role.guard";
+
 
 const routes: Routes = [
     {
@@ -28,58 +25,26 @@ const routes: Routes = [
         canActivate: [LoggedOutGuard]
     },
     {
-        path: 'register',
-        component: RegisterComponent,
-        canActivate: [LoggedOutGuard]
-    },
-    {
-        path: 'admin/users',
-        component: UsersComponent,
-        canActivate: [LoggedInGuard]
-    },
-    {
-        path: 'profile/:id',
-        component: ProfileComponent,
-        canActivate: [LoggedInGuard]
-    },
-    {
-        path: 'search',
-        component: SearchComponent,
-        canActivate: [LoggedInGuard]
-    },
-    {
-        path: 'chat-groups',
-        component: MessagesComponent,
-        canActivate: [LoggedInGuard]
-    },
-    {
-        path: 'chat/:roomId',
-        component: ChatComponent,
-        canActivate: [LoggedInGuard]
-    },
-    {
-        path: 'setting',
-        component: SettingComponent,
-        canActivate: [LoggedInGuard]
-    },
-    {
-        path: 'verification/:uuid',
-        component: VerificationComponent,
-        canActivate: [LoggedOutGuard]
-    },
-    {
-        path: 'password',
-        component: PasswordComponent,
-        canActivate: [LoggedOutGuard]
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [LoggedInGuard, RoleGuard],
+        data: {role: ['admin']}
     },
     {
         path: 'user',
         component: UserComponent,
-        canActivate: [LoggedInGuard]
+        canActivate: [LoggedInGuard, RoleGuard],
+        data: {role: ['user']}
     },
     {
-        path: 'game',
-        component: GameComponent,
+        path: 'editor',
+        component: EditorComponent,
+        canActivate: [LoggedInGuard, RoleGuard],
+        data: {role: ['editor']}
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
         canActivate: [LoggedInGuard]
     },
 ];
@@ -88,24 +53,19 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         LoginComponent,
-        RegisterComponent,
-        ProfileComponent,
-        MessagesComponent,
-        ChatComponent,
-        SearchComponent,
-        UsersComponent,
-        SettingComponent,
-        VerificationComponent,
-        PasswordComponent,
+        AdminComponent,
         UserComponent,
-        GameComponent,
+        EditorComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
+        NgxCaptchaModule,
         RouterModule.forRoot(routes),
         ReactiveFormsModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        BotDetectCaptchaModule
     ],
     exports: [RouterModule],
     providers: [

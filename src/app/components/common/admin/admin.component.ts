@@ -5,11 +5,11 @@ import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.component.css']
+    templateUrl: './admin.component.html',
+    styleUrls: ['./admin.component.css']
 })
 
-export class UserComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
 
     constructor(private http: HttpClient, private router: Router) {
